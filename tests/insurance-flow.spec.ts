@@ -7,7 +7,8 @@ test("Customer can open the Uitvaartverzekering product page on DELA", async ({
   await page.goto("https://www.dela.nl/verzekeringen");
 
   // Step 2: Click the correct button using a flexible text locator
-  await page.locator("text=Ga naar de uitvaartverzekering").click();
+  const insuranceButton = page.locator('text=Ga naar de uitvaartverzekering');
+  await insuranceButton.click({ timeout: 15000 });
 
   // Step 3: Wait for the new page to load by checking the URL
   await expect(page).toHaveURL(/.*uitvaartverzekering/);
